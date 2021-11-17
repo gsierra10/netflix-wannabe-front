@@ -1,12 +1,10 @@
-import Header from "./components/Header/Header";
-import AddUser from "./components/AddUser/AddUser";
+import RegisterPage from "./containers/RegisterPage/RegisterPage";
 
 function App() {
 
   return (
     <div className="container">
-      <Header />
-      <AddUser />
+      <RegisterPage />
     </div>
   );
 }

@@ -9,7 +9,7 @@ const AddUser = ({ onAdd }) => {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if(!email || !name){
+        if(!email || !name || !password || !setReminder){
             alert('Por favor añada texto')
             return
         }
