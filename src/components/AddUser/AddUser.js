@@ -7,9 +7,9 @@ const AddUser = ({ onAdd }) => {
     const [password, setPassword] = useState('')
     const [reminder, setReminder] = useState(false)
 
-    const onSubmit = (e) => {
+    const onSubmit = async(e) => {
         e.preventDefault()
-
+        
         if(!email || !name || !password || !setReminder){
             alert('Por favor añada texto')
             return
