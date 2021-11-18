@@ -1,36 +1,36 @@
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-
-const AddUser = ({ onAdd }) => {
+const AddUser = () => {
     // const [name, setName] = useState('')
     // const [email, setEmail] = useState('')
     // const [password, setPassword] = useState('')
     // const [reminder, setReminder] = useState(false)
+    const navigate = useNavigate()
 
     const handleChange = async (e) => {
         e.preventDefault()
-        const name = e.target.elements.name.value
-        const email = e.target.elements.email.value
-        const password = e.target.elements.password.value
 
         try{
             let result = await fetch('http://localhost:5000/user/alta',{
                 method: "POST",
-                body:{ name: name, mail: email, password: password }
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ "name": e.target.name.value ,"email": e.target.email.value, "password": e.target.password.value })
             })
 
-            result = result.json()
+            result = await result.json()
+            console.log(result)
 
-            // Guardamos el token para que todos los componentes que lo necesiten puedan recuperarlo
-            localStorage.setItem('token', result)
-        
+            // // Guardamos el token para que todos los componentes que lo necesiten puedan recuperarlo
+            // localStorage.setItem('token', result)
+            navigate('/login')
+
         } catch(e){
             console.log(e)
         }
-        if(!email || !name || !password ){
-            alert('Por favor añada texto')
-            return
-        }
+        // if(!email || !name || !password ){
+        //     alert('Por favor añada texto')
+        //     return
+        // }
     
         // onAdd({ name, email, password, reminder })
 
