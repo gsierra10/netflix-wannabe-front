@@ -1,12 +1,16 @@
-import Header from "./components/Header/Header";
-import AddUser from "./components/AddUser/AddUser";
+import RegisterPage from "./containers/RegisterPage/RegisterPage";
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import LoginPage from "./containers/LoginPage/LoginPage";
 
 function App() {
-
   return (
     <div className="container">
-      <Header />
-      <AddUser />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/register" element={<RegisterPage />}/>
+          <Route path="/login" element={<LoginPage />}/>
+        </Routes>  
+      </BrowserRouter>
     </div>
   );
 }
