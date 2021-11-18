@@ -1,11 +1,11 @@
 import React from 'react'
 import AddUser from '../../components/AddUser/AddUser'
-import Header from '../../components/Header/Header'
+import RegisterHeader from '../../components/RegisterHeader/RegisterHeader'
 
 const RegisterPage = () => {
     return (
         <div>
-            <Header />
+            <RegisterHeader />
             <AddUser />
         </div>
     )

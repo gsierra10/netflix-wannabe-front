@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types'
 
-const Header = ({ title }) => {
+const RegisterHeader = ({ title }) => {
     return (
         <header className='header'>
             <h1>{title}</h1>
@@ -8,8 +8,8 @@ const Header = ({ title }) => {
     )
 }
 
-Header.defaultProps = {
+RegisterHeader.defaultProps = {
     title: 'Registro de Usuario Netflix-Wannabe'
 }
 
-export default Header
+export default RegisterHeader
