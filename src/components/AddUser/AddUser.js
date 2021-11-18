@@ -2,51 +2,69 @@ import { useState } from 'react'
 
 
 const AddUser = ({ onAdd }) => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [reminder, setReminder] = useState(false)
+    // const [name, setName] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [password, setPassword] = useState('')
+    // const [reminder, setReminder] = useState(false)
 
-    const onSubmit = async(e) => {
+    const handleChange = async (e) => {
         e.preventDefault()
+        const name = e.target.elements.name.value
+        const email = e.target.elements.email.value
+        const password = e.target.elements.password.value
+
+        try{
+            let result = await fetch('http://localhost:5000/user/alta',{
+                method: "POST",
+                body:{ name: name, mail: email, password: password }
+            })
+
+            result = result.json()
+
+            // Guardamos el token para que todos los componentes que lo necesiten puedan recuperarlo
+            localStorage.setItem('token', result)
         
-        if(!email || !name || !password || !setReminder){
+        } catch(e){
+            console.log(e)
+        }
+        if(!email || !name || !password ){
             alert('Por favor añada texto')
             return
         }
     
-        onAdd({ name, email, password, reminder })
+        // onAdd({ name, email, password, reminder })
 
-        setName('')
-        setEmail('')
-        setPassword('')
-        setReminder(false)
+        // setName('')
+        // setEmail('')
+        // setPassword('')
+        // setReminder(false)
     }
 
     return (
-        <form className='add-form' onSubmit={onSubmit}>
+        <form className='add-form' onSubmit={(e)=>handleChange(e)}>
             <div className='form-control'>
                 <label>Nombre</label>
                 <input 
                     type='text' 
                     placeholder='Añada su nombre completo' 
-                    value={name} 
-                    onChange={(e) => setName(e.target.value)} />
+                    name='name'
+                    required/>
             </div>
             <div className='form-control'>
                 <label>Email</label>
                 <input 
-                    type='text' 
+                    type='text'
+                    name='email'
                     placeholder='Añada un Email valido' 
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)}/>
+                    required/>
             </div>
             <div className='form-control'>
                 <label>Contraseña</label>
                 <input 
                     type='password' 
-                    placeholder='Añade su contraseña, minimo 8 caracteres' value={password} 
-                    onChange={(e) => setPassword(e.target.value)} />
+                    placeholder='Añade su contraseña, minimo 8 caracteres' 
+                    name='password'
+                    required/>
             </div>    
             <div className='form-control form-control-check'>
                 <label>¿Esta de acuerdo con nuestros terminos y condiciones?</label>
