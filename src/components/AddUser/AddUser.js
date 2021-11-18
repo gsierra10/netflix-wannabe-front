@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+
 const AddUser = ({ onAdd }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -38,12 +39,12 @@ const AddUser = ({ onAdd }) => {
                     type='text' 
                     placeholder='Añada un Email valido' 
                     value={email} 
-                    onChange={(e) => setEmail(e.target.value)} />
+                    onChange={(e) => setEmail(e.target.value)}/>
             </div>
             <div className='form-control'>
                 <label>Contraseña</label>
                 <input 
-                    type='text' 
+                    type='password' 
                     placeholder='Añade su contraseña, minimo 8 caracteres' value={password} 
                     onChange={(e) => setPassword(e.target.value)} />
             </div>    
