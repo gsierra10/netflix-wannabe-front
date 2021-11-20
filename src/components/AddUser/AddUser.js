@@ -1,10 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
 const AddUser = () => {
-    // const [name, setName] = useState('')
-    // const [email, setEmail] = useState('')
-    // const [password, setPassword] = useState('')
-    // const [reminder, setReminder] = useState(false)
     const navigate = useNavigate()
 
     const handleChange = async (e) => {
@@ -27,17 +23,6 @@ const AddUser = () => {
         } catch(e){
             console.log(e)
         }
-        // if(!email || !name || !password ){
-        //     alert('Por favor añada texto')
-        //     return
-        // }
-    
-        // onAdd({ name, email, password, reminder })
-
-        // setName('')
-        // setEmail('')
-        // setPassword('')
-        // setReminder(false)
     }
 
     return (
