@@ -1,69 +1,33 @@
-import { useNavigate } from 'react-router-dom'
+import APIConsumer from '../../../services/apiConsumer.js'
 
 const AddUser = () => {
-    const navigate = useNavigate()
 
-    const handleChange = async (e) => {
+    const setHandleChanges = async (e) => {
         e.preventDefault()
+        await APIConsumer.registerUser(JSON.stringify({name: e.target.name.value, email: e.target.email.value, password: e.target.password.value}))
+        } 
 
-        try{
-            let result = await fetch('http://localhost:5000/user/alta',{
-                method: "POST",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ "name": e.target.name.value ,"email": e.target.email.value, "password": e.target.password.value })
-            })
-
-            result = await result.json()
-            console.log(result)
-
-            // // Guardamos el token para que todos los componentes que lo necesiten puedan recuperarlo
-            // localStorage.setItem('token', result)
-            navigate('/login')
-
-        } catch(e){
-            console.log(e)
-        }
-    }
-
-    return (
-        <form className='add-form' onSubmit={(e)=>handleChange(e)}>
-            <div className='form-control'>
-                <label>Nombre</label>
-                <input 
-                    type='text' 
-                    placeholder='Añada su nombre completo' 
-                    name='name'
-                    required/>
-            </div>
-            <div className='form-control'>
-                <label>Email</label>
-                <input 
-                    type='text'
-                    name='email'
-                    placeholder='Añada un Email valido' 
-                    required/>
-            </div>
-            <div className='form-control'>
-                <label>Contraseña</label>
-                <input 
-                    type='password' 
-                    placeholder='Añade su contraseña, minimo 8 caracteres' 
-                    name='password'
-                    required/>
-            </div>    
-            <div className='form-control form-control-check'>
-                <label>¿Esta de acuerdo con nuestros terminos y condiciones?</label>
-                <input 
-                    type='checkbox'
-                    // checked={reminder} 
-                    // value={reminder} 
-                    // onChange={(e) => setReminder(e.currentTarget.checked)}
-                    />
-            </div>
-
-            <input type='submit' value='Registrarse' className='btn btn-block' />
-        </form>
-    )
+return (
+    <form className='add-form' onSubmit={(e)=>setHandleChanges(e)}>
+        <div className='form-control'>
+            <label>Nombre</label>
+            <input type='text' name='name' placeholder='Añada su nombre completo.' required />
+        </div>
+        <div className='form-control'>
+            <label>Email</label>
+            <input type='email' name='email' placeholder='Añada un email válido.' required />
+        </div>
+        <div className='form-control'>
+            <label>Contraseña</label>
+            <input type='password' name='password' placeholder='Añade su contraseña con un mínimo  de 8 carácteres.' required />
+        </div>
+        <div className='form-control form-control-check'>
+            <label>¿Está de acuerdo con los terminos y condiciones?</label>
+            <input type='checkbox' required />
+        </div>
+        <input type='submit' value='Registrarse' className='btn btn-block' />
+    </form>
+)
 }
 
 export default AddUser
