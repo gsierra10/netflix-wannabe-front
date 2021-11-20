@@ -1,35 +1,41 @@
 export const APIConsumer = {
 
-    loginUser: async (data) =>{
-        try{
-            let result = await fetch('http://localhost:0420/user/login',{
-                method: "POST",
-                headers: {'Content-Type': 'application/json'},
-                body: data
-            })
-            result = result.json()
-            localStorage.setItem('token', result)
-        } catch(data){
-            console.log(data)
-        }
-     },
+loginUser: async (data) => {
+    try{
+        let result = await fetch('http://localhost:0420/user/login', {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: data
+        })
+        result = result.json()
+        localStorage.setItem('token', result)
+    } catch(data){
+        console.log(data)
+    }
+    },
 
-    // getMovies: async (text) => {
-    //     const result = await fetch('http://localhost:3000/api/movie/?title=${text}', {
-    //         method: "GET"
-    //     })
-    //     return result
-    // },
+registerUser: async (data) => {
+    try{
+        let result = await fetch('http://localhost:0420/user/register', {
+        method: "POST",
+        body: data
+        })
+    } catch (data){
+        console.log(data)
+    }
+    },
 
-    // saveMovie:async (movie) => {
-    //     const result = await fetch('http://localhost:3000/api/movie/', {
-    //         method: "POST",
-    //         body:{
-    //             movie
-    //         }
-    //     })
-    //     return result
-    // },
+searchMovie: async (data) => {
+    try{
+        let result = await fetch('',{
+            method: "GET",
+            body: data
+        })
+    } catch(data){
+        console.log(data)
+    }
+    },
+
 }
 
 export default APIConsumer

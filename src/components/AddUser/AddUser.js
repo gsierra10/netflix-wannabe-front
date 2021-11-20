@@ -1,66 +1,32 @@
-import { useState } from 'react'
+import APIConsumer from '../../../services/apiConsumer.js'
 
-
-const AddUser = ({ onAdd }) => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [reminder, setReminder] = useState(false)
-
-    const onSubmit = async(e) => {
+const AddUser = () => {
+    const setHandleChanges = async (e) => {
         e.preventDefault()
-        
-        if(!email || !name || !password || !setReminder){
-            alert('Por favor añada texto')
-            return
-        }
-    
-        onAdd({ name, email, password, reminder })
-
-        setName('')
-        setEmail('')
-        setPassword('')
-        setReminder(false)
+        await APIConsumer.registerUser(JSON.stringify({name: e.target.name.value, email: e.target.email.value, password: e.target.password.value}))
     }
 
-    return (
-        <form className='add-form' onSubmit={onSubmit}>
-            <div className='form-control'>
-                <label>Nombre</label>
-                <input 
-                    type='text' 
-                    placeholder='Añada su nombre completo' 
-                    value={name} 
-                    onChange={(e) => setName(e.target.value)} />
-            </div>
-            <div className='form-control'>
-                <label>Email</label>
-                <input 
-                    type='text' 
-                    placeholder='Añada un Email valido' 
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)}/>
-            </div>
-            <div className='form-control'>
-                <label>Contraseña</label>
-                <input 
-                    type='password' 
-                    placeholder='Añade su contraseña, minimo 8 caracteres' value={password} 
-                    onChange={(e) => setPassword(e.target.value)} />
-            </div>    
-            <div className='form-control form-control-check'>
-                <label>¿Esta de acuerdo con nuestros terminos y condiciones?</label>
-                <input 
-                    type='checkbox'
-                    // checked={reminder} 
-                    // value={reminder} 
-                    // onChange={(e) => setReminder(e.currentTarget.checked)}
-                    />
-            </div>
-
-            <input type='submit' value='Registrarse' className='btn btn-block' />
-        </form>
-    )
+return (
+    <form className='add-form' onSubmit={(e)=>setHandleChanges(e)}>
+        <div className='form-control'>
+            <label>Nombre</label>
+            <input type='text' name='name' placeholder='Añada su nombre completo.' required />
+        </div>
+        <div className='form-control'>
+            <label>Email</label>
+            <input type='email' name='email' placeholder='Añada un email válido.' required />
+        </div>
+        <div className='form-control'>
+            <label>Contraseña</label>
+            <input type='password' name='password' placeholder='Añade su contraseña con un mínimo  de 8 carácteres.' required />
+        </div>
+        <div className='form-control form-control-check'>
+            <label>¿Está de acuerdo con los terminos y condiciones?</label>
+            <input type='checkbox' required />
+        </div>
+        <input type='submit' value='Registrarse' className='btn btn-block' />
+    </form>
+)
 }
 
 export default AddUser
