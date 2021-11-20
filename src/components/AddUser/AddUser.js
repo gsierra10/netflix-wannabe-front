@@ -1,9 +1,28 @@
 import APIConsumer from '../../../services/apiConsumer.js'
 
 const AddUser = () => {
-    const setHandleChanges = async (e) => {
+    const navigate = useNavigate()
+
+    const handleChange = async (e) => {
         e.preventDefault()
-        await APIConsumer.registerUser(JSON.stringify({name: e.target.name.value, email: e.target.email.value, password: e.target.password.value}))
+
+        try{
+            let result = await fetch('http://localhost:5000/user/alta',{
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ "name": e.target.name.value ,"email": e.target.email.value, "password": e.target.password.value })
+            })
+
+            result = await result.json()
+            console.log(result)
+
+            // // Guardamos el token para que todos los componentes que lo necesiten puedan recuperarlo
+            // localStorage.setItem('token', result)
+            navigate('/login')
+
+        } catch(e){
+            console.log(e)
+        }
     }
 
 return (
