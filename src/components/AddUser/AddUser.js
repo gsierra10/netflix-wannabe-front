@@ -1,10 +1,11 @@
 import APIConsumer from '../../../services/apiConsumer.js'
 
 const AddUser = () => {
+
     const setHandleChanges = async (e) => {
         e.preventDefault()
         await APIConsumer.registerUser(JSON.stringify({name: e.target.name.value, email: e.target.email.value, password: e.target.password.value}))
-    }
+        } 
 
 return (
     <form className='add-form' onSubmit={(e)=>setHandleChanges(e)}>
