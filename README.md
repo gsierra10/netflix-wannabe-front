@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# FrontEnd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+El FrontEnd es la parte visual de la apliación, en este caso utilizamos una **SPA** (Single Page Aplicación) con el propósito de dar una experiencia más fluida a los usuarios, como si fuera una aplicación de escritorio. En un SPA todos los códigos de HTML, JavaScript, y CSS se cargan una sola vez y los recursos necesarios se cargan dinámicamente cuando lo requiera la página, normalmente como respuesta a las acciones del usuario.
 
-## Available Scripts
+![Image Text](https://github.com/gsierra10/netflix-wannabe-front/blob/4d34cb30f07e1e65a8287d23576d6d39c5f80302/Estructura_carpetas.png)
 
-In the project directory, you can run:
 
-### `npm start`
+## SPA
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+El proceso de creación de una página de este proyecto, requiere enlazar distintos scripts desde un App.js que tomamos como núcleo principal, en el que establecemos un Container, con las rutas que va  a tener esta web. Aquí importamos la página de Login, Home, etc, y establecemos la URL de la siguiente manera:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Image text](https://github.com/gsierra10/netflix-wannabe-front/blob/4d34cb30f07e1e65a8287d23576d6d39c5f80302/AppJS.png)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Para crear la página de login, creamos un archivo que llamamos LoginPage.js y establecemos una función con el mismo nombre de este archivo, e introducimos los componentes que necesita esta página, en este caso un Header y una lógica que llamamos LoginUser, donde se encuentra el formulario que va a tener que rellenar el usuario para hacer el login a la aplicación,  quedando este archivo de la siguiente manera:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Image text](https://github.com/gsierra10/netflix-wannabe-front/blob/4d34cb30f07e1e65a8287d23576d6d39c5f80302/login.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+En la parte superior se puede ver la importación de ambos archivos.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+La parte lógica que podemos encontrar en el LoginUser, precisa la estructura que va a tener la página para iniciar sesión,  donde hemos añadido un formulario  a rellenar por el usuario que consta de un email y de una contraseña, y un botón para dar acceso, en caso de existir un usuario en la base de datos, se contrasta la información y se permite el acceso, de no encontrarse, saldrá un mensaje de error, que indicará al usuario si está mal escrito el email o contraseña o que no existe.
+Este LoginUser lo exportamos en la parte inferior del archivo y en la superior importamos el servicio de APIConsumer, que pasamos a explicar a continuación.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Image text](https://github.com/gsierra10/netflix-wannabe-front/blob/4d34cb30f07e1e65a8287d23576d6d39c5f80302/loginUser.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+En el archivo de APIConsumer, establecemos la ruta que va a tener esta página con el metodo que necesitamos, en este caso es un POST y con un contenido de tipo json que dará un token al usuario, para verificar su autenticación y le permita hacer las comprar que necesite.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Image text](https://github.com/gsierra10/netflix-wannabe-front/blob/4d34cb30f07e1e65a8287d23576d6d39c5f80302/APIConsumer.png)
