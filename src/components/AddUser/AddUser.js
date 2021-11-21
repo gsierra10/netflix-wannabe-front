@@ -1,14 +1,16 @@
-import APIConsumer from '../../../services/apiConsumer.js'
+import APIConsumer from "../../services/apiConsumer"
+import { useNavigate } from "react-router"
 
 const AddUser = () => {
-
-    const setHandleChanges = async (e) => {
+    const navigate = useNavigate()
+    const handleChanges = async (e) => {
         e.preventDefault()
-        await APIConsumer.registerUser(JSON.stringify({name: e.target.name.value, email: e.target.email.value, password: e.target.password.value}))
-        } 
+        await APIConsumer.registerUser(JSON.stringify({"name": e.target.name.value ,"email": e.target.email.value, "password": e.target.password.value}))            
+        navigate('/login')
+        }
 
 return (
-    <form className='add-form' onSubmit={(e)=>setHandleChanges(e)}>
+    <form className='add-form' onSubmit={(e)=>handleChanges(e)}>
         <div className='form-control'>
             <label>Nombre</label>
             <input type='text' name='name' placeholder='Añada su nombre completo.' required />
