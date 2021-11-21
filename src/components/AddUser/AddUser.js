@@ -3,7 +3,7 @@ import APIConsumer from '../../../services/apiConsumer.js'
 const AddUser = () => {
     const navigate = useNavigate()
 
-    const handleChange = async (e) => {
+    const setHandleChanges = async (e) => {
         e.preventDefault()
 
         try{
