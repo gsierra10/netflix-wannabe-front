@@ -1,17 +1,16 @@
-import APIConsumer from "../../services/apiConsumer"
-
-const MovieCard = () => {
-    const setHandleChanges = async (e) => {
-        await APIConsumer.findMovie(JSON.stringify({movie: e.target.movie.value}))
-    }
+const MovieCard = (props) => {
     return(
-        <form className="add-form" onSubmit={(e)=> setHandleChanges(e)}>
-            <div className="form-control">
-                <label>Nombre de la pelicula</label>
-                <input type="text" name="movie" placeholder="Busca por titulo" required/>
-            </div>
-        </form>
+        <div>
+            <ul>
+                <li>{props.title}</li>
+                <li>{props.director}</li>
+                <li>{props.genre}</li>
+            </ul>
+        </div>
+        
     )
 }
 
 export default MovieCard
+
+
