@@ -1,32 +1,16 @@
-import APIConsumer from '../../../services/apiConsumer.js'
+import APIConsumer from "../../services/apiConsumer"
+import { useNavigate } from "react-router"
 
 const AddUser = () => {
     const navigate = useNavigate()
-
-    const setHandleChanges = async (e) => {
+    const handleChanges = async (e) => {
         e.preventDefault()
-
-        try{
-            let result = await fetch('http://localhost:5000/user/alta',{
-                method: "POST",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ "name": e.target.name.value ,"email": e.target.email.value, "password": e.target.password.value })
-            })
-
-            result = await result.json()
-            console.log(result)
-
-            // // Guardamos el token para que todos los componentes que lo necesiten puedan recuperarlo
-            // localStorage.setItem('token', result)
-            navigate('/login')
-
-        } catch(e){
-            console.log(e)
+        await APIConsumer.registerUser(JSON.stringify({"name": e.target.name.value ,"email": e.target.email.value, "password": e.target.password.value}))            
+        navigate('/login')
         }
-    }
 
 return (
-    <form className='add-form' onSubmit={(e)=>setHandleChanges(e)}>
+    <form className='add-form' onSubmit={(e)=>handleChanges(e)}>
         <div className='form-control'>
             <label>Nombre</label>
             <input type='text' name='name' placeholder='Añada su nombre completo.' required />

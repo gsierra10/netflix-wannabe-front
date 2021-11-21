@@ -7,8 +7,8 @@ export const APIConsumer = {
                 headers: {'Content-Type': 'application/json'},
                 body: data
             })
-            result = result.json()
-            localStorage.setItem('token', result)
+            result = await result.json()
+            localStorage.setItem('token', result.data)
         } catch(data){
             console.log(data)
         }
@@ -16,10 +16,11 @@ export const APIConsumer = {
 
     registerUser: async (data) => {
         try{
-            let result = await fetch('http://localhost:0420/user/register', {
+            let result = await fetch('http://localhost:0420/user/alta',{
             method: "POST",
+            headers: {'Content-Type': 'application/json'},
             body: data
-            })
+        })
         } catch (data){
             console.log(data)
         }
