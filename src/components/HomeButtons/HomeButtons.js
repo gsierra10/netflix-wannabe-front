@@ -2,15 +2,9 @@ import { useNavigate } from 'react-router-dom'
 
 const HomeButtons = () => {
     const navigate = useNavigate()
-    const navigateButton = () =>{
-        navigate('/')
-    }
-    const navigateLogin = () =>{
-        navigate('/login')
-    }
-    const navigateRegister = () =>{
-        navigate('/register')
-    }
+    const navigateButton = () =>{ navigate('/movies') }
+    const navigateLogin = () =>{ navigate('/login') }
+    const navigateRegister = () =>{ navigate('/register') }
 
 
     return (
