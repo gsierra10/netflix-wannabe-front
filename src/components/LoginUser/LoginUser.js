@@ -1,10 +1,15 @@
 
 import APIConsumer from "../../services/apiConsumer"
+import { Navigate, useNavigate } from "react-router-dom"
 
 const LoginUser = () => {    
+    const navigate = useNavigate()
+    
+  
     const handleChanges = async (e) => {
         e.preventDefault()
         await APIConsumer.loginUser(JSON.stringify({email: e.target.email.value, password: e.target.password.value}))
+       navigate("/home")  
     }
 
     return (
