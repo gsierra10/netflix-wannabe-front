@@ -3,8 +3,8 @@ const MovieCard = (props) => {
         <div>
             <ul>
                 <li>{props.title}</li>
-                <li>{props.director}</li>
-                <li>{props.genre}</li>
+                {/* <li>{props.director}</li>
+                <li>{props.genre}</li> */}
             </ul>
         </div>
         
@@ -12,5 +12,3 @@ const MovieCard = (props) => {
 }
 
 export default MovieCard
-
-
