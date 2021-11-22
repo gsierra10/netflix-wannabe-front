@@ -10,7 +10,14 @@ const SearchMovies = () => {
 		try {
 			let res = await fetch('http://localhost:0420/movies')
 			res = await res.json()
-			return setMovies(movies)
+			setMovies(res.data) 
+			
+			/* 
+				ESTO NO ES UN ARRAY!!!! por eso no te deja hacer un map, 
+				donde está el console log? 
+				cuando lo ponemos, nos sale un array vacío :( 
+				¿por que el backend os da un array vacio? 
+				No debería, en postman nos da el json completo y en la respuesta del navegador sale la info de la película*/
 			
 			// setLoading(false)
 		} catch (error) {
@@ -37,8 +44,9 @@ const SearchMovies = () => {
 		
 			{/* {error && <span>No podemos recuperar las peliculas</span>} */}
 			{/* {loading && <h1>Buscando</h1>} */}
-			{[movies].map((dataMovie)=>{
-				return(<MovieCard title={dataMovie.title} director={dataMovie.director} genre = {dataMovie.genre} duration = {dataMovie.duration} actors = {dataMovie.actors}/>)
+			{movies.map((dataMovie)=>{
+				console.log(dataMovie)
+				return(<MovieCard title={dataMovie.title} />)
 			})}
 		</>
 	)
