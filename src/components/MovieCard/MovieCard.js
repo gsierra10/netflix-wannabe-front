@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
+
 const MovieCard = (props) => {
+
     return(
         <div>
             <ul>
-                <li>{props.title}</li>
-                {/* <li>{props.director}</li>
-                <li>{props.genre}</li> */}
+               <li><Link to = {`/${props.title}`}> {props.title} - {props.director} - {props.genre} </Link></li>
             </ul>
         </div>
         
