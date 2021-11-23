@@ -45,7 +45,7 @@ export const APIConsumer = {
         }catch(data){
             console.log(data)
         }
-    }
+    },
 
     findAllRents: async (data) => {
         try{

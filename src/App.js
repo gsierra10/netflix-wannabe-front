@@ -4,7 +4,7 @@ import LoginPage from "./containers/LoginPage/LoginPage";
 import HomePage from "./containers/HomePage/HomePage";
 import './index.scss'
 import SearchMovies from "./components/SearchMovies/SearchMovies";
-import MainPage from "./containers/MainPAge/MainPage";
+import MainPage from "./containers/MainPage/MainPage";
 
 function App() {
   return (
