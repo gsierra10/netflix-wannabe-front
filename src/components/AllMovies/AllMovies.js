@@ -3,12 +3,13 @@ import MovieCard from '../MovieCard/MovieCard'
 import APIConsumer from '../../services/apiConsumer';
 
 const AllMovies = () => { 
-	const[movies,setMovies] = useState([])
+	const[movies, setMovies] = useState([])
+	const[rents, setRents] = useState([])
 	const handleChanges = async (e) => {
 		try {
-			let res = await fetch('http://localhost:3040/rent/')
+			let res = await fetch('http://localhost:5000/rent/rents')
 			res = await res.json()
-			setMovies(res.data) 
+			setRents(res.data) 
 		} catch (error) {
 			
 		}
@@ -18,9 +19,9 @@ const AllMovies = () => {
 	},[])
 	return (		
 		<>
-			{movies.map((dataMovie)=>{
-				console.log(dataMovie)
-				return(<MovieCard title={dataMovie.title} />)
+			{rents.map((dataRents)=>{
+				console.log(dataRents)
+				return(<MovieCard title={dataRents.id} />)
 			})}
 		</>
 	)
