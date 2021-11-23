@@ -45,11 +45,10 @@ export const APIConsumer = {
         }catch(data){
             console.log(data)
         }
-    }
-
+    },
     findAllRents: async (data) => {
         try{
-            let result = await fetch('http://localhost:0420/rent/all',{
+            let result = await fetch('http://localhost:5000/rent/all',{
                 method: "GET",
                 body: data
             })
