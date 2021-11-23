@@ -8,7 +8,7 @@ const SearchMovies = () => {
 
 	const getMovies = async() => {
 		try {
-			let res = await fetch('http://localhost:0420/movies')
+			let res = await fetch('http://localhost:3043/rents/')
 			res = await res.json()
 			setMovies(res.data) 
 			
