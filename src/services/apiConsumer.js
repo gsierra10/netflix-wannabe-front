@@ -2,13 +2,13 @@ export const APIConsumer = {
 
     loginUser: async (data) => {
         try{
-            let result = await fetch('http://localhost:0420/user/login', {
+            let result = await fetch('http://localhost:3000/user/login', {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: data
             })
             result = await result.json()
-            localStorage.setItem('token', result.data)
+            localStorage.setItem('token', result.data)  
         } catch(data){
             console.log(data)
         }
@@ -16,7 +16,7 @@ export const APIConsumer = {
 
     registerUser: async (data) => {
         try{
-            let result = await fetch('http://localhost:0420/user/alta',{
+            let result = await fetch('http://localhost:3000/user/alta',{
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: data
@@ -28,7 +28,7 @@ export const APIConsumer = {
 
     findMovie: async (data) => {
         try{
-            let result = await fetch('http://localhost:0420/movie/',{
+            let result = await fetch('http://localhost:3000/movie/',{
                 method: "GET",
                 body: data
             })
@@ -36,6 +36,16 @@ export const APIConsumer = {
             console.log(data)
         }
     },
+    allMovies: async (data) => {
+        try{
+            let res = await fetch('http://localhost:3001/movies',{
+                method:"GET",
+            })
+            res = await res.json(res.data)
+        }catch(data){
+            console.log(data)
+        }
+    }
 
     findAllRents: async (data) => {
         try{

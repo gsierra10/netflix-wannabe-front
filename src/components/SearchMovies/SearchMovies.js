@@ -9,8 +9,9 @@ const SearchMovies = () => {
 	const getMovies = async(e) => {
 		// e.preventDefault()
 		try {
+
 			e.preventDefault()
-			let res = await fetch(`http://localhost:0420/movies/?title=${e.target.title.value}`)			
+			let res = await fetch(`http://localhost:0420/movies/?title=${e.target.title.value}`)	
 			res = await res.json()
 			setMovies(res.data)
 			// setLoading(false)

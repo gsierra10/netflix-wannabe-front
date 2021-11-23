@@ -9,11 +9,9 @@ const HomeButtons = () => {
 
     return (
         <div>
-            
                 <input onClick={navigateButton} type='submit' value='Ver que peliculas tenemos' className='btn btn-block' />
                 <input onClick={navigateLogin} type='submit' value='Ir a mi perfil' className='btn btn-block' />
-                <input onClick={navigateRegister} type='submit' value='Registrarse' className='btn btn-block' />
-            
+                <input onClick={navigateRegister} type='submit' value='Registrarse' className='btn btn-block' />            
         </div>
     )
 }
