@@ -6,19 +6,13 @@ const SearchMovies = () => {
 	// const[loading, setLoading] = useState(true);
 	// const[error, setError] = useState(false);
 
-	const getMovies = async() => {
+	const getMovies = async(e) => {
+		// e.preventDefault()
 		try {
-			let res = await fetch('http://localhost:0420/movies')
+			e.preventDefault()
+			let res = await fetch(`http://localhost:0420/movies/?title=${e.target.title.value}`)			
 			res = await res.json()
-			setMovies(res.data) 
-			
-			/* 
-				ESTO NO ES UN ARRAY!!!! por eso no te deja hacer un map, 
-				donde está el console log? 
-				cuando lo ponemos, nos sale un array vacío :( 
-				¿por que el backend os da un array vacio? 
-				No debería, en postman nos da el json completo y en la respuesta del navegador sale la info de la película*/
-			
+			setMovies(res.data)
 			// setLoading(false)
 		} catch (error) {
 			console.log("errorsito")
@@ -27,27 +21,21 @@ const SearchMovies = () => {
 		}
 		console.log(movies)
 	}
-	useEffect(() =>{
-		getMovies()
-	},[])
+	useEffect(() =>{ getMovies() },[])
+
 	return (
 
 		<>
 		<form className="add-form" onSubmit={(e)=> getMovies(e)}>
             <div className="form-control">
                 <label>Nombre de la pelicula</label>
-                <input type="text" name="movie" placeholder="Busca por titulo" required/>
+                <input type="text" name="movie" placeholder="Busca por título..." required/>
 				<button>Botón</button>
             </div>
         </form>
-		
-		
 			{/* {error && <span>No podemos recuperar las peliculas</span>} */}
 			{/* {loading && <h1>Buscando</h1>} */}
-			{movies.map((dataMovie)=>{
-				console.log(dataMovie)
-				return(<MovieCard title={dataMovie.title} />)
-			})}
+			{movies.map((dataMovie)=>{return(<MovieCard title={dataMovie.title} director={dataMovie.director} genre={dataMovie.genre}/>)})}
 		</>
 	)
 }

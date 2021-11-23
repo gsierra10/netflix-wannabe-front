@@ -37,6 +37,17 @@ export const APIConsumer = {
         }
     },
 
+    findAllRents: async (data) => {
+        try{
+            let result = await fetch('http://localhost:0420/rent/all',{
+                method: "GET",
+                body: data
+            })
+        } catch(data){
+            console.log(data)
+        }
+    }
+
 }
 
 export default APIConsumer
