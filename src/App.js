@@ -4,6 +4,7 @@ import LoginPage from "./containers/LoginPage/LoginPage";
 import HomePage from "./containers/HomePage/HomePage";
 import './index.scss'
 import SearchMovies from "./components/SearchMovies/SearchMovies";
+import MainPage from "./containers/MainPAge/MainPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />}/>
           <Route path="/login" element={<LoginPage />}/>
           <Route path="/movies" element={<SearchMovies />}/>
+          <Route path="/home" element={<MainPage/>}/>
         </Routes>  
       </BrowserRouter>
     </div>
