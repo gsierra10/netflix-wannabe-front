@@ -3,14 +3,19 @@ import MovieCard from '../MovieCard/MovieCard'
 import APIConsumer from '../../services/apiConsumer';
 
 const AllMovies = () => { 
-	const[movies,setMovies] = useState()
+	const[movies,setMovies] = useState([])
 	const handleChanges = async (e) => {
-		e.preventDefault()
-    	await APIConsumer.allMovies(JSON.stringify({movie: e.target.movie.value}))
+		try {
+			let res = await fetch('http://localhost:3040/rent/')
+			res = await res.json()
+			setMovies(res.data) 
+		} catch (error) {
+			
+		}
 	}
 	useEffect(()=>{
-		AllMovies()
-	})
+		handleChanges()
+	},[])
 	return (		
 		<>
 			{movies.map((dataMovie)=>{
