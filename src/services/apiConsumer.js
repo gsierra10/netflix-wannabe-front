@@ -2,7 +2,7 @@ export const APIConsumer = {
 
     loginUser: async (data) => {
         try{
-            let result = await fetch('http://localhost:5000/user/login', {
+            let result = await fetch('http://localhost:3001/user/login', {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: data
@@ -16,7 +16,7 @@ export const APIConsumer = {
 
     registerUser: async (data) => {
         try{
-            let result = await fetch('http://localhost:5000/user/alta',{
+            let result = await fetch('http://localhost:3001/user/alta',{
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: data
@@ -28,7 +28,7 @@ export const APIConsumer = {
 
     findMovie: async (data) => {
         try{
-            let result = await fetch('http://localhost:5000/movie/',{
+            let result = await fetch('http://localhost:3001/movie/',{
                 method: "GET",
                 body: data
             })
@@ -38,7 +38,7 @@ export const APIConsumer = {
     },
     allMovies: async (data) => {
         try{
-            let res = await fetch('http://localhost:5000/movies',{
+            let res = await fetch('http://localhost:3001/movies',{
                 method:"GET",
             })
             res = await res.json(res.data)
@@ -48,7 +48,7 @@ export const APIConsumer = {
     },
     findAllRents: async (data) => {
         try{
-            let result = await fetch('http://localhost:5000/rent/all',{
+            let result = await fetch('http://localhost:3001/rent/all',{
                 method: "GET",
                 body: data
             })
