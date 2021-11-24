@@ -31,7 +31,7 @@ const SearchMovies = () => {
 			let jtw = jwtDecode(user);
 			try{
 			e.preventDefault()
-			let results = await fetch("http://localhost:3001/rent/", {
+			let results = await fetch("http://localhost:5000/rent/", {
 				method: "POST",
 				body: {
 					"idUser": jtw.data,

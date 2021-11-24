@@ -7,7 +7,7 @@ const AdminChicha = () => {
     const getRents = async() =>{
         try{
             
-            let result = await fetch('http://localhost:3001/rent/all')
+            let result = await fetch('http://localhost:5000/rent/all')
             result = await result.json()
             console.log(result.searchAll)
             setRents(result.searchAll) 
