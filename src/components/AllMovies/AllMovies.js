@@ -22,7 +22,9 @@ const AllMovies = () => {
 			{rents.map((dataRents)=>{
 				console.log(dataRents)
 				return(<MovieCard title={dataRents.id} />)
+				
 			})}
+
 		</>
 	)
 }

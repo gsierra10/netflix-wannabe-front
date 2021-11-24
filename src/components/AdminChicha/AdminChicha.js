@@ -5,14 +5,11 @@ import RentCard from "../RentCard/RentCard"
 const AdminChicha = () => {
     const [rents, setRents] = useState([])
     const getRents = async() =>{
-
         try{
             
             let result = await fetch('http://localhost:3001/rent/all')
             result = await result.json()
-
             console.log(result.searchAll)
-
             setRents(result.searchAll) 
         } catch(data){
             console.log(data)
